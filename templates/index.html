@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <style>
+    .bot__container {
+      display: flex;
+      flex-direction: column;
+      height: fit-content;
+      width: fit-content;
+      border-radius: 20px;
+      border-bottom-right-radius: 0px;
+      background: linear-gradient(#00b3ff, rgb(253, 87, 228));
+    }
+
+    .bot__container-top-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem 1rem;
+    }
+
+    .bot {
+      display: flex;
+      flex-direction: column;
+      height: fit-content;
+      width: fit-content;
+      padding: 1rem 1.5rem;
+      border-radius: 50%;
+      justify-content: center;
+      align-items: center;
+      background: rgba(116, 116, 116, 0.575);
+    }
+
+    .bot-head {
+      width: 30px;
+      height: 30px;
+      background-color: rgb(0, 217, 255);
+      border-radius: 50%;
+    }
+
+    .bot-body {
+      width: 45px;
+      height: 30px;
+      background-color: rgb(0, 179, 255);
+      border-top-right-radius: 50%;
+      border-top-left-radius: 50%;
+      border-bottom-right-radius: 40%;
+      border-bottom-left-radius: 40%;
+      margin: 2px;
+    }
+
+    .bot__container-message-section {
+      padding: 0.5rem 0.5rem;
+      margin: 3px;
+      border-radius: 15px;
+      background: rgba(0, 0, 0, 0.242);
+    }
+
+    .bot__container-message-section-screen {
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: transparent;
+    }
+
+    .general__message {
+      border-radius: 15px;
+      position: inherit;
+      justify-self: center;
+      background: rgba(0, 0, 0, 0.132);
+      padding: 1rem;
+      margin-bottom: 10px;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+      width: 20vw;
+    }
+
+    .user__message {
+      display: flex;
+      align-items: center;
+      justify-self: flex-start;
+      border: 2px solid #bd2be2a1;
+      background: rgba(0, 0, 0, 0.132);
+      padding: 5px;
+      gap: 10px;
+      border-top-right-radius: 30px;
+      border-top-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      margin-bottom: 10px;
+      color: white;
+      width: 20vw;
+    }
+
+    .bot__message {
+      display: flex;
+      color: white;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.132);
+      justify-self: flex-start;
+      border: 2px solid #2b89e287;
+      padding: 10px;
+      border-top-right-radius: 30px;
+      border-top-left-radius: 30px;
+      border-bottom-left-radius: 30px;
+      margin-bottom: 10px;
+      width: 20vw;
+    }
+
+    .profiles {
+      border-radius: 40%;
+      height: fit-content;
+      width: fit-content;
+      border: 1px solid black;
+      padding: 10px;
+      background: black;
+    }
+
+    .bot__container-form-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      gap: 0px;
+    }
+
+    .input {
+      border-radius: 20px;
+      border-bottom-right-radius: 0px;
+      border-top-right-radius: 0px;
+      padding: 10px;
+      margin: 0px;
+      background: rgba(255, 255, 255, 0.53);
+    }
+    .button {
+      margin: 0px;
+      border-radius: 20px;
+      border-bottom-left-radius: 0px;
+      border-top-left-radius: 0px;
+      padding: 10px;
+    }
+  </style>
+  <body>
+    <div class="bot__container">
+      <div class="bot__container-top-section">
+        <div class="bot">
+          <div class="bot-head"></div>
+          <div class="bot-body"></div>
+        </div>
+        <p>Hi there! I'm <strong>bob</strong>.</p>
+      </div>
+
+      <div class="bot__container-message-section">
+        <div class="bot__container-message-section-screen">
+          {% for message in chat_history %}
+
+          <div class="general__message">
+            <p>bob will be your assisstant bot, you can say Hi to him.</p>
+          </div>
+
+          <div class="user__message">
+            <h5 class="profiles">you</h5>
+            <p>{{ message.user }}</p>
+          </div>
+
+          <div class="bot__message">
+            <h5 class="profiles">bob</h5>
+            <p>{{ message.bot }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="bot__container-form-section">
+        <form method="post">
+          <input
+            class="input"
+            type="text"
+            name="user_message"
+            placeholder="Type your message"
+            required
+          />
+          <button class="button" type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
